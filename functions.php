@@ -22,4 +22,17 @@ add_theme_support('title-tag');
 }
 add_action('after_setup_theme','university_features');
 
+//fonction avec l' objet query de wordpress en paramètre
+function university_adjust_queries($query){
+    // seulement si o est dans le front end et dans l' archive event et si la méthode is main query de l' objet query est = true
+    if(!is_admin()AND is_post_type_archive('event') AND $query->is_main_query()){
+        // le 1er argument est celui qu' on cible et le second est la valeur qu on lui donne
+        $query->set('meta_key','event_date');
+        $query->set('orderby','meta_value_num');
+        $query->set('order','ASC');
 
+
+    }
+
+}
+add_action('pre_get_posts','university_adjust_queries');
