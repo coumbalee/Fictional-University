@@ -17,7 +17,8 @@
           $homepageEvents = new WP_QUERY(array(
           'posts_per_page'=> -1,
           'post_type'=>'event',
-          'orderby'=> 'title',
+          'meta_key'=> 'event_date',
+          'orderby'=> 'meta_value_num',
           'order'=>'ASC'
           ));
 
