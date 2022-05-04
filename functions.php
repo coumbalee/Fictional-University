@@ -24,6 +24,13 @@ add_action('after_setup_theme','university_features');
 
 //fonction avec l' objet query de wordpress en paramètre
 function university_adjust_queries($query){
+
+    if(!is_admin() AND is_post_type_archive('program') AND is_main_query() ){
+    $query->set('orderby','title');
+    $query->set('order','ASC');
+    $query->set('posts_per_page',-1);
+    }
+
     // seulement si o est dans le front end et dans l' archive event et si la méthode is main query de l' objet query est = true
     if(!is_admin()AND is_post_type_archive('event') AND $query->is_main_query()){
         $today = date('Ymd');
