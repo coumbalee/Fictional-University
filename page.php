@@ -4,7 +4,8 @@ while(have_posts()){
     the_post();
     page_banner(array(
       'title'=>'This is the title',
-      'subtitle'=> 'This is a subtitle'
+      'subtitle'=> 'This is a subtitle',
+      'photo'=> 'https://images.unsplash.com/photo-1650003874746-3a87ef067c17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2874&q=80'
     ));
     ?>
 
