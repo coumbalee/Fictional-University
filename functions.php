@@ -1,5 +1,9 @@
 <?php 
 function page_banner($args){
+    if(!$args['title']){
+     get_the_title();
+     $args['title'] = get_the_title();
+    }
 
 ?>
 <div class="page-banner">
