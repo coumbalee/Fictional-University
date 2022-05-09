@@ -3997,6 +3997,7 @@ class Search {
     this.events();
     this.isOverlayOpen = false;
     this.isSpinnerVisible = false;
+    this.previousValue;
     this.typingTimer;
   } // 2 events
 
@@ -4005,19 +4006,23 @@ class Search {
     this.openButton.on("click", this.openOverlay.bind(this));
     this.closeButton.on("click", this.closeOverlay.bind(this));
     jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("keydown", this.keyPressDispatcher.bind(this));
-    this.searchField.on("keydown", this.typingLogic.bind(this));
+    this.searchField.on("keyup", this.typingLogic.bind(this));
   } // 3 methods (function, action...)
 
 
   typingLogic() {
-    clearTimeout(this.typingTimer);
+    if (this.searchField.val() != this.previousValue) {
+      clearTimeout(this.typingTimer);
 
-    if (!this.isSpinnerVisible) {
-      this.resultDiv.html('<div class ="spinner-loader"></div>');
-      this.isSpinnerVisible = true;
+      if (!this.isSpinnerVisible) {
+        this.resultDiv.html('<div class ="spinner-loader"></div>');
+        this.isSpinnerVisible = true;
+      }
+
+      this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
     }
 
-    this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
+    this.previousValue = this.searchField.val();
   }
 
   getResults() {
