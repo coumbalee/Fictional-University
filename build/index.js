@@ -4010,6 +4010,7 @@ class Search {
 
   typingLogic() {
     clearTimeout(this.typingTimer);
+    this.resultDiv.html('<div class ="spinner-loader"></div>');
     this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
   }
 
