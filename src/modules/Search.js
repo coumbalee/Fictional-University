@@ -3,6 +3,7 @@ import $ from "jquery";
 class Search {
   // 1 describe and create/initiate our object
   constructor() {
+    this.resultDiv = $("#search-overlay__results");
     this.openButton = $(".js-search-trigger");
     this.closeButton = $(".search-overlay__close");
     this.searchOverlay = $(".search-overlay");
@@ -22,10 +23,13 @@ class Search {
   // 3 methods (function, action...)
   typingLogic() {
     clearTimeout(this.typingTimer);
-    this.typingTimer = setTimeout(function () {
-      console.log("time out test");
-    }, 2000);
+    this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
   }
+
+  getResults() {
+    this.resultDiv.html("Imagine real search result here");
+  }
+
   keyPressDispatcher(e) {
     //  To know the code of a key
     // console.log(e.keyCode);
