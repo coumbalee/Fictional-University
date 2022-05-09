@@ -3999,8 +3999,22 @@ class Search {
   events() {
     this.openButton.on("click", this.openOverlay.bind(this));
     this.closeButton.on("click", this.closeOverlay.bind(this));
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on("keyup", this.keyPressDispatcher.bind(this));
   } // 3 methods (function, action...)
 
+
+  keyPressDispatcher(e) {
+    //  To know the code of a key
+    console.log(e.keyCode);
+
+    if (e.keyCode == 83) {
+      this.openOverlay();
+    }
+
+    if (e.keyCode == 27) {
+      this.closeOverlay();
+    }
+  }
 
   openOverlay() {
     this.searchOverlay.addClass("search-overlay--active");
