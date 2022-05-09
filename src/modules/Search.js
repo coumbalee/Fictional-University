@@ -50,7 +50,11 @@ class Search {
   keyPressDispatcher(e) {
     //  To know the code of a key
     // console.log(e.keyCode);
-    if (e.keyCode == 83 && this.isOverlayOpen) {
+    if (
+      e.keyCode == 83 &&
+      this.isOverlayOpen &&
+      $("input, textarea").is(":focus")
+    ) {
       this.openOverlay();
     }
 
