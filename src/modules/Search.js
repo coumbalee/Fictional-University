@@ -1,6 +1,6 @@
 class Search {
   constructor() {
-    alert("hello, i ama a search!");
+    // alert("hello, i ama a search!");
   }
 }
 

@@ -3983,8 +3983,7 @@ class MobileMenu {
 
 __webpack_require__.r(__webpack_exports__);
 class Search {
-  constructor() {
-    alert("hello, i ama a search!");
+  constructor() {// alert("hello, i ama a search!");
   }
 
 }
