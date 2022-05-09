@@ -10,6 +10,7 @@ class Search {
     this.searchField = $("#search-term");
     this.events();
     this.isOverlayOpen = false;
+    this.isSpinnerVisible = false;
     this.typingTimer;
   }
   // 2 events
@@ -23,12 +24,16 @@ class Search {
   // 3 methods (function, action...)
   typingLogic() {
     clearTimeout(this.typingTimer);
-    this.resultDiv.html('<div class ="spinner-loader"></div>');
+    if (!this.isSpinnerVisible) {
+      this.resultDiv.html('<div class ="spinner-loader"></div>');
+      this.isSpinnerVisible = true;
+    }
     this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
   }
 
   getResults() {
     this.resultDiv.html("Imagine real search result here");
+    this.isSpinnerVisible = false;
   }
 
   keyPressDispatcher(e) {

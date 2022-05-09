@@ -3996,6 +3996,7 @@ class Search {
     this.searchField = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-term");
     this.events();
     this.isOverlayOpen = false;
+    this.isSpinnerVisible = false;
     this.typingTimer;
   } // 2 events
 
@@ -4010,12 +4011,18 @@ class Search {
 
   typingLogic() {
     clearTimeout(this.typingTimer);
-    this.resultDiv.html('<div class ="spinner-loader"></div>');
+
+    if (!this.isSpinnerVisible) {
+      this.resultDiv.html('<div class ="spinner-loader"></div>');
+      this.isSpinnerVisible = true;
+    }
+
     this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
   }
 
   getResults() {
     this.resultDiv.html("Imagine real search result here");
+    this.isSpinnerVisible = false;
   }
 
   keyPressDispatcher(e) {
