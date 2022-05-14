@@ -38,6 +38,11 @@ function university_files(){
     wp_enqueue_style('university_main_styles',get_theme_file_uri('/build/style-index.css'));
     wp_enqueue_style('university_extra_styles',get_theme_file_uri('/build/index.css'));
 
+
+    wp_localize_script('main_university_js','universityData',array(
+      'root_url'=> get_site_url()
+    ));
+
 }
 // fonction wordpress qui prend 2 arguments : 1 fonction wordpress et une que l' on crée nous même
 add_action('wp_enqueue_scripts','university_files');
