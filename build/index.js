@@ -4038,6 +4038,7 @@ class Search {
         ${posts.map(item => `<li><a href"${item.link}">${item.title.rendered}</a></li>`).join("")}
         ${posts.length ? "</ul>" : ""}
         `);
+      this.isSpinnerVisible = false;
     });
   }
 
