@@ -54,20 +54,21 @@ class Search {
             "/wp-json/wp/v2/pages?search=" +
             this.searchField.val(),
           (pages) => {
+            let combinedResults = posts.concat(pages);
             this.resultDiv.html(`
           <h2 class="search-overlay__section-title">General Information</h2>
          ${
-           posts.length
+           combinedResults.length
              ? '<ul class ="link-list min-list">'
              : "<p>No general information matches that search</p>"
          }
-          ${posts
+          ${combinedResults
             .map(
               (item) =>
                 `<li><a href"${item.link}">${item.title.rendered}</a></li>`
             )
             .join("")}
-          ${posts.length ? "</ul>" : ""}
+          ${combinedResults.length ? "</ul>" : ""}
           `);
             this.isSpinnerVisible = false;
           }
