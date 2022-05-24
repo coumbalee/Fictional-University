@@ -4021,7 +4021,7 @@ class Search {
           this.isSpinnerVisible = true;
         }
 
-        this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
+        this.typingTimer = setTimeout(this.getResults.bind(this), 750);
       } else {
         this.resultDiv.html("");
         this.isSpinnerVisible = false;
